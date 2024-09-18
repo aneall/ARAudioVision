@@ -1,0 +1,115 @@
+#usda 1.0
+(
+    defaultPrim = "SpeakersAnimated"
+    metersPerUnit = 1
+    upAxis = "Y"
+)
+
+reorder rootPrims = ["Root", "GridMaterial"]
+
+def "SpeakersAnimated" (
+    active = true
+    customData = {
+        float3 rotationEulerHint = (0, 4.712389, 0)
+    }
+    references = @SpeakersAnimated.usdz@
+)
+{
+    reorder nameChildren = ["Materials", "Meshes", "AnimationLibrary", "SpeakerAnimation", "RCP_BehaviorsContainer", "OnAddedToScene"]
+    quatf xformOp:orient = (0.70710677, 0, -0.70710677, 0)
+    float3 xformOp:scale = (0.0007999999, 0.0007999999, 0.0007999999)
+    float3 xformOp:translate = (-0.16653961, -1.4901161e-8, 0.015000001)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+    over "Materials"
+    {
+        over "outline"
+        {
+            token outputs:mtlx:surface
+            token outputs:realitykit:vertex
+        }
+
+        over "Material"
+        {
+            token outputs:mtlx:surface
+            token outputs:realitykit:vertex
+        }
+
+        over "speaker_body"
+        {
+            token outputs:mtlx:surface
+            token outputs:realitykit:vertex
+        }
+    }
+
+    def RealityKitComponent "AnimationLibrary"
+    {
+        token info:id = "RealityKit.AnimationLibrary"
+
+        def RealityKitAnimationFile "default_subtree_animation"
+        {
+            uniform bool looping = 1
+            uniform string name = "default subtree animation"
+        }
+
+        def RealityKitClipDefinition "Clip_default_subtree_animation"
+        {
+            uniform string[] clipNames = ["FirstClip", "SecondClip"]
+            uniform string sourceAnimationName = "default subtree animation"
+            uniform double[] startTimes = [0, 4.566166666666667]
+        }
+
+        def RealityKitAnimationFile "Clip"
+        {
+            uniform bool looping = 1
+            uniform string name = "FiveSecClip"
+        }
+
+        def RealityKitAnimationFile "_SpeakersAnimated_SpeakerAnimation"
+        {
+            uniform bool looping = 1
+            uniform string name = "/SpeakersAnimated/SpeakerAnimation"
+        }
+
+        def RealityKitAnimationFile "FirstClip"
+        {
+            uniform bool looping = 1
+            uniform string name = "FirstClip"
+        }
+
+        def RealityKitAnimationFile "SecondClip"
+        {
+            uniform bool looping = 1
+            uniform string name = "SecondClip"
+        }
+    }
+
+    def RealityKitTimeline "SpeakerAnimation"
+    {
+        uniform token info:id = "9598BAA0-B6BD-4665-B104-7FC262CE9D35"
+
+        def RealityKitTrack "Track"
+        {
+            uniform token info:id = "D40C5C98-61D3-4585-A6E0-C04CDD64684E"
+
+            def RealityKitAction "Animation"
+            {
+                string actionKind = "animation"
+                string animation = "FirstClip"
+                int blendLayer = 500
+                double duration = 4.566166666666667
+                uniform token info:id = "E1A0DD93-E98E-48C0-9CD3-2DDADB63BB0B"
+                int loopCount = 4
+                bool separateAnimatedValue = 1
+                double startTime = 0
+                rel target = </SpeakersAnimated>
+
+                def RealityKitStruct "handoffType"
+                {
+                    token type = "stop"
+                }
+            }
+        }
+    }
+}
+
