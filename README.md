@@ -1,4 +1,4 @@
 # ARAudioVision
- Demo with AVFoundation, RealityKit, and SwiftUI for playing audio
+ Demo with AVFoundation, RealityKit, and SwiftUI for Apple Vision Pro (AVP)
 
-Part of the contribution for [Multimodal Neural Acoustic Fields for Immersive Mixed Reality](https://ieeexplore.ieee.org/document/10938352) involving application to the Apple Vision Pro video see-through (VST) head-mounted display format.
+Part of the contribution for [Multimodal Neural Acoustic Fields for Immersive Mixed Reality](https://ieeexplore.ieee.org/document/10938352) involving application to the AVP video see-through (VST) head-mounted display format.
